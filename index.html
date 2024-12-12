@@ -1,158 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- divinectorweb.com -->     
 <head>
-    <meta charset="UTF-8"> 
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ethetic</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <title>Eth</title>
     <style>
         body {
             margin: 0;
-            overflow: hidden;
-            background-color: #091a22;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
         }
-        .text-area {
-            display: grid;
-            place-items: center;
-            height: 100vh;
-            text-align: center;
-            font-family: "Montserrat", sans-serif;
-            text-transform: uppercase;
-            font-size: 50px;
-            -webkit-text-fill-color: transparent;
-            -webkit-text-stroke: 2px #fff;
+
+        .dashboard {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
         }
-        .wrapper {
-            position: absolute;
+
+        .header {
             width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
+            background-color: #1e1e1e;
+            padding: 20px;
+            text-align: center;
+            font-size: 1.5em;
+            color: #00aaff;
         }
-        .round {
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: #01b4f9;
-            border: 5px solid #01b4f9;
-            opacity: 0;
-            box-shadow: 0 0 100px #01b4f9, 0 0 10px #01b4f9, 0 0 20px #01b4f9;
-            animation: animate 4s linear infinite, ani-2 2s linear infinite;
+
+        .upload-container {
+            margin: 20px;
+            padding: 20px;
+            background: #1e1e1e;
+            border: 2px dashed #00aaff;
+            border-radius: 10px;
+            text-align: center;
+            cursor: pointer;
         }
-        .round:nth-child(1) {
-            left: 5%;
-            animation-delay: 0.5s;
+
+        .upload-container:hover {
+            background-color: #292929;
         }
-        .round:nth-child(2) {
-            left: 65%;
-            animation-delay: 1s;
+
+        .gallery {
+            width: 100%;
+            max-width: 800px;
+            margin: 20px auto;
         }
-        .round:nth-child(3) {
-            left: 90%;
-            animation-delay: 1.5s;
+
+        .gallery-item {
+            background-color: #1e1e1e;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 8px;
         }
-        .round:nth-child(4) {
-            left: 18%;
-            animation-delay: 2s;
+
+        .gallery-item a {
+            color: #00aaff;
+            text-decoration: none;
         }
-        .round:nth-child(5) {
-            left: 93%;
-            animation-delay: 2.5s;
-        }
-        .round:nth-child(6) {
-            left: 52%;
-            animation-delay: 3s;
-        }
-        .round:nth-child(7) {
-            left: 65%;
-            animation-delay: 3.5s;
-        }
-        .round:nth-child(8) {
-            left: 35%;
-            animation-delay: 4s;
-        }
-        .round:nth-child(9) {
-            left: 85%;
-            animation-delay: 4.5s;
-        }
-        .round:nth-child(10) {
-            left: 45%;
-            animation-delay: 5s;
-        }
-        .round:nth-child(11) {
-            left: 36%;
-            animation-delay: 5.5s;
-        }
-        .round:nth-child(12) {
-            left: 72%;
-            animation-delay: 6s;
-        }
-        .round:nth-child(13) {
-            left: 14%;
-            animation-delay: 6.5s;
-        }
-        .round:nth-child(14) {
-            left: 70%;
-            animation-delay: 7s;
-        }
-        @keyframes animate {
-            0% {
-                top: 0;
-                opacity: 1;
-            }
-            20% {
-                top: 20%;
-                opacity: 0.8;
-            }
-            40% {
-                top: 40%;
-                opacity: 0.6;
-            }
-            60% {
-                top: 60%;
-                opacity: 0.4;
-            }
-            80% {
-                top: 80%;
-                opacity: 0.2;
-            }
-            100% {
-                top: 100%;
-                opacity: 0;
-            }
-        }
-        @keyframes ani-2 {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(2.5);
-            }
+
+        .gallery-item a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="round"></div>
-        <div class="round"></div>
-        <div class="round"></div>
-        <div class="round"></div>
-        <div class="round"></div>
-        <div class="round"></div>
-        <div class="round"></div>
-        <div class="round"></div>
-        <div class="round"></div>
-        <div class="round"></div>
-        <div class="round"></div>
-        <div class="round"></div>
-        <div class="round"></div>
-        <div class="round"></div>
+
+<div class="dashboard">
+    <div class="header">Eth</div>
+
+    <div class="upload-container" id="uploadButton">
+        Drag and drop a video file or click to upload
     </div>
 
-    <div class="text-area">
-        <h2>Coming Soon <br>12/20/2024</h2>
+    <div class="gallery" id="gallery">
+        <h2>Gallery</h2>
     </div>
+</div>
+
+<script>
+    const uploadButton = document.getElementById('uploadButton');
+    const gallery = document.getElementById('gallery');
+
+    // Load saved videos from localStorage
+    function loadGallery() {
+        const savedVideos = JSON.parse(localStorage.getItem('videos')) || [];
+        savedVideos.forEach(video => {
+            const galleryItem = document.createElement('div');
+            galleryItem.classList.add('gallery-item');
+
+            galleryItem.innerHTML = `
+                <h3>${video.title}</h3>
+                <video src="${video.url}" controls width="100%"></video>
+                <p>Link: <a href="${video.link}" target="_blank">${video.link}</a></p>
+            `;
+
+            gallery.appendChild(galleryItem);
+        });
+    }
+
+    function generateLink() {
+        const randomId = Math.random().toString(36).substring(2, 10);
+        return `https://ethetic.cc/${randomId}`;
+    }
+
+    function handleFileUpload(file) {
+        const link = generateLink();
+        const title = prompt('Enter a title for the video:');
+        const videoUrl = URL.createObjectURL(file); // Temporary URL for preview
+
+        const videoData = {
+            title: title || 'Untitled',
+            url: videoUrl,
+            link: link
+        };
+
+        // Save video data to localStorage
+        const savedVideos = JSON.parse(localStorage.getItem('videos')) || [];
+        savedVideos.push(videoData);
+        localStorage.setItem('videos', JSON.stringify(savedVideos));
+
+        const galleryItem = document.createElement('div');
+        galleryItem.classList.add('gallery-item');
+
+        galleryItem.innerHTML = `
+            <h3>${videoData.title}</h3>
+            <video src="${videoData.url}" controls width="100%"></video>
+            <p>Link: <a href="${videoData.link}" target="_blank">${videoData.link}</a></p>
+        `;
+
+        gallery.appendChild(galleryItem);
+    }
+
+    uploadButton.addEventListener('click', () => {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = 'video/*';
+        input.onchange = (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                handleFileUpload(file);
+            }
+        };
+        input.click();
+    });
+
+    uploadButton.addEventListener('dragover', (event) => {
+        event.preventDefault();
+        uploadButton.style.backgroundColor = '#292929';
+    });
+
+    uploadButton.addEventListener('dragleave', () => {
+        uploadButton.style.backgroundColor = '#1e1e1e';
+    });
+
+    uploadButton.addEventListener('drop', (event) => {
+        event.preventDefault();
+        uploadButton.style.backgroundColor = '#1e1e1e';
+        const file = event.dataTransfer.files[0];
+        if (file) {
+            handleFileUpload(file);
+        }
+    });
+
+    // Load gallery on page load
+    window.onload = loadGallery;
+</script>
+
 </body>
 </html>
