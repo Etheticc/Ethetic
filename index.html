@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- divinectorweb.com -->     
+<head>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethetic</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #091a22;
+        }
+        .text-area {
+            display: grid;
+            place-items: center;
+            height: 100vh;
+            text-align: center;
+            font-family: "Montserrat", sans-serif;
+            text-transform: uppercase;
+            font-size: 50px;
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke: 2px #fff;
+        }
+        .wrapper {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .round {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #01b4f9;
+            border: 5px solid #01b4f9;
+            opacity: 0;
+            box-shadow: 0 0 100px #01b4f9, 0 0 10px #01b4f9, 0 0 20px #01b4f9;
+            animation: animate 4s linear infinite, ani-2 2s linear infinite;
+        }
+        .round:nth-child(1) {
+            left: 5%;
+            animation-delay: 0.5s;
+        }
+        .round:nth-child(2) {
+            left: 65%;
+            animation-delay: 1s;
+        }
+        .round:nth-child(3) {
+            left: 90%;
+            animation-delay: 1.5s;
+        }
+        .round:nth-child(4) {
+            left: 18%;
+            animation-delay: 2s;
+        }
+        .round:nth-child(5) {
+            left: 93%;
+            animation-delay: 2.5s;
+        }
+        .round:nth-child(6) {
+            left: 52%;
+            animation-delay: 3s;
+        }
+        .round:nth-child(7) {
+            left: 65%;
+            animation-delay: 3.5s;
+        }
+        .round:nth-child(8) {
+            left: 35%;
+            animation-delay: 4s;
+        }
+        .round:nth-child(9) {
+            left: 85%;
+            animation-delay: 4.5s;
+        }
+        .round:nth-child(10) {
+            left: 45%;
+            animation-delay: 5s;
+        }
+        .round:nth-child(11) {
+            left: 36%;
+            animation-delay: 5.5s;
+        }
+        .round:nth-child(12) {
+            left: 72%;
+            animation-delay: 6s;
+        }
+        .round:nth-child(13) {
+            left: 14%;
+            animation-delay: 6.5s;
+        }
+        .round:nth-child(14) {
+            left: 70%;
+            animation-delay: 7s;
+        }
+        @keyframes animate {
+            0% {
+                top: 0;
+                opacity: 1;
+            }
+            20% {
+                top: 20%;
+                opacity: 0.8;
+            }
+            40% {
+                top: 40%;
+                opacity: 0.6;
+            }
+            60% {
+                top: 60%;
+                opacity: 0.4;
+            }
+            80% {
+                top: 80%;
+                opacity: 0.2;
+            }
+            100% {
+                top: 100%;
+                opacity: 0;
+            }
+        }
+        @keyframes ani-2 {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(2.5);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="round"></div>
+        <div class="round"></div>
+        <div class="round"></div>
+        <div class="round"></div>
+        <div class="round"></div>
+        <div class="round"></div>
+        <div class="round"></div>
+        <div class="round"></div>
+        <div class="round"></div>
+        <div class="round"></div>
+        <div class="round"></div>
+        <div class="round"></div>
+        <div class="round"></div>
+        <div class="round"></div>
+    </div>
+
+    <div class="text-area">
+        <h2>Coming Soon <br>12/20/2024</h2>
+    </div>
+</body>
+</html>
