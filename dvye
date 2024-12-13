@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dvyeware</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        body {
+            background-image: url('trust.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.5s ease;
+        }
+        
+        .enter-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 1px 1px 1px #000;
+            z-index: 10;
+            backdrop-filter: blur(5px);
+            pointer-events: all;
+        }
+
+        .rounded-box {
+            position: relative;
+            width: 700px;
+            height: 250px;
+            background-color: rgba(12, 12, 12, 0.67);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            transition: box-shadow 0.3s ease;
+            backdrop-filter: blur(10px);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+        }
+        .rounded-box:hover {
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+        }
+
+        .profile-picture {
+            width: 100px;
+            height: 100px;
+            background-image: url('pfp.gif');
+            background-size: cover;
+            background-position: center;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .title-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            text-shadow: 1px 1px 1px #000, -1px -1px 1px #000;
+        }
+
+        .description-text {
+            font-size: 16px;
+            color: rgb(160, 160, 160);
+            text-align: center;
+        }
+
+        .gem-box {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 30px;
+            height: 30px;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            border: 2px solid #8c8c8c;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .gem-box img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .tooltip {
+            position: absolute;
+            top: -10px;
+            left: 40px;
+            background-color: #1e1e1e;
+            padding: 5px 10px;
+            border-radius: 8px;
+            color: #ccc;
+            display: none;
+        }
+        .gem-box:hover .tooltip {
+            display: block;
+        }
+
+        .volume-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            z-index: 20;
+        }
+    </style>
+</head>
+<body>
+    <div class="enter-overlay" id="enter-overlay">
+        Click To Enter
+    </div>
+
+    <div class="volume-btn" id="volume-btn">
+        🔊
+    </div>
+
+    <div class="rounded-box" id="rounded-box">
+        <div class="profile-picture"></div>
+        <div class="title-text">imdvye</div>
+        <div class="description-text">Lwk Unwanted Here</div>
+
+        <div class="gem-box">
+            <img src="gem.png" alt="Gem">
+            <div class="tooltip">co-owner</div>
+        </div>
+    </div>
+
+    <audio id="background-music" src="music.mp3" preload="auto" loop></audio>
+
+    <script>
+        document.getElementById('enter-overlay').addEventListener('click', function () {
+            const audio = document.getElementById('background-music');
+            audio.play();
+            document.getElementById('enter-overlay').style.display = 'none';
+            document.getElementById('rounded-box').style.opacity = 1;
+        });
+
+        document.getElementById('volume-btn').addEventListener('click', function () {
+            const audio = document.getElementById('background-music');
+            if (audio.muted) {
+                audio.muted = false;
+                document.getElementById('volume-btn').textContent = '🔊';
+            } else {
+                audio.muted = true;
+                document.getElementById('volume-btn').textContent = '🔇';
+            }
+        });
+    </script>
+</body>
+</html>
