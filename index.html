@@ -1,1 +1,43 @@
-yachtify is my master - ( ETHETIC COMING SOON )
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yachtify Access</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            text-align: center;
+            padding-top: 100px;
+        }
+        #error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Yachtify is my master - ( ETHETIC COMING SOON )</h1>
+
+    <div>
+        <input type="text" id="accessKey" placeholder="Enter Access Key">
+        <button onclick="checkAccess()">Enter Dev Build</button>
+    </div>
+    <div id="error"></div>
+
+    <script>
+        function checkAccess() {
+            const inputKey = document.getElementById('accessKey').value;
+            const requiredKey = "yvj7463ry87j3v64tj78364t86387";
+
+            if (inputKey === requiredKey) {
+                window.location.href = "dev.html";
+            } else {
+                document.getElementById('error').textContent = "Incorrect access key. Please try again.";
+            }
+        }
+    </script>
+</body>
+</html>
