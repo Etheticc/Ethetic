@@ -170,6 +170,8 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
+            opacity: 1;
+            transition: opacity 1s;
         }
     </style>
     <script
@@ -243,14 +245,24 @@
             sitekey: "your-site-key",
             callback: function (token) {
                 console.log(`Challenge Success ${token}`);
-                // Hide captcha after success and show the product content
-                document.querySelector('.cf-turnstile').style.display = 'none'; // Hide captcha
-                document.querySelector('.product-container').style.display = 'flex'; // Show product box
-
-                // Redirect to "main.html" after a brief delay
+                
+                // Fade out the CAPTCHA
+                const captchaContainer = document.querySelector('.cf-turnstile');
+                captchaContainer.style.opacity = 0;
+                
                 setTimeout(() => {
-                    window.location.href = 'main.html'; // Redirect to the desired page
-                }, 1000); // Delay for 1 second to show the product box before redirecting
+                    captchaContainer.style.display = 'none'; // Hide the CAPTCHA container completely
+                }, 1000); // Wait for the fade-out effect to finish
+
+                // Fade in the product container
+                const productBox = document.querySelector('.product-container');
+                productBox.style.display = 'flex';
+                productBox.style.opacity = 0;
+                
+                setTimeout(() => {
+                    productBox.style.transition = 'opacity 1s';
+                    productBox.style.opacity = 1; // Fade in the product box
+                }, 500); // Slight delay before fading in the product box
             },
         });
     };
