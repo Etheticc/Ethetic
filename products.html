@@ -1,1 +1,253 @@
-error-------
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ethetic.cc - products</title>
+    <style>
+        @font-face {
+            font-family: 'Sawer';
+            src: url('Sawer.ttf') format('truetype');
+        }
+
+        body {
+            margin: 0;
+            background-color: rgb(23, 23, 23);
+            color: white;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            height: 100vh;
+            overflow: hidden;
+            opacity: 0; /* Initially hide everything */
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        header {
+            background-color: #1f1e1e;
+            color: white;
+            padding: 10px 20px;
+            border-bottom: 1px solid rgb(244, 161, 247);
+            text-align: left;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        header img {
+            height: 40px;
+            margin-left: 10px;
+        }
+
+        header .header-text {
+            color: rgb(244, 161, 247);
+            font-weight: bold;
+            font-size: 18px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        header .header-text:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .product-container {
+            margin-top: 80px;  
+            background-color: #2b2b2b;
+            border: 2px solid rgb(197, 110, 214);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 15px rgba(244, 161, 247, 0.5);
+            text-align: center;
+            width: 350px;
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            position: absolute;
+            top: 30px; 
+            left: 40px;
+            transition: transform 0.1s ease;
+            display: none; /* Initially hidden */
+        }
+
+        .product-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(244, 161, 247, 0.5);
+        }
+
+        .product-container h2 {
+            font-size: 24px;
+            color: rgb(244, 161, 247);
+            margin-top: 10px;
+        }
+
+        .product-container p {
+            font-size: 14px;
+            color: #ccc;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .product-container .price {
+            font-size: 18px;
+            color: rgb(244, 161, 247);
+            margin-top: 15px;
+        }
+
+        .product-container .buy-button {
+            background-color: rgb(244, 161, 247);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .product-container .buy-button:hover {
+            transform: scale(1.05);
+            background-color: rgb(197, 110, 214);
+        }
+
+        footer {
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+            font-size: 14px;
+            color: rgb(150, 150, 150);
+        }
+
+        footer a {
+            color: rgb(244, 161, 247);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: white;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            width: 5px;
+            height: 5px;
+            background-color: white;
+            border-radius: 50%;
+            animation: fall linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        /* Centering the captcha in the middle of the screen */
+        .cf-turnstile {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+    <script
+        src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback"
+        defer
+    ></script>
+</head>
+<body>
+
+<header>
+    <img src="hi.png" alt="Logo">
+    <div class="header-text" onclick="window.location.href='index.html';">ethetic.cc</div>
+</header>
+
+<div class="product-container" id="productBox">
+    <img src="f93950d223feb47af8fb0eeb2007d006.webp" alt="Product Image">
+    <h2>Nisch Premium</h2>
+    <p>The Best and Most Overpowered Roblox Fisch Script On The Market</p>
+    <div class="price">$7.00</div>
+    <button class="buy-button" id="buyButton">Buy Nisch</button>
+</div>
+
+<div style="margin: 20px;">
+    <div class="cf-turnstile" id="example-container" data-sitekey="0x4AAAAAAA2NhmVoiQ-xpKDP"></div>
+</div>
+
+<script type="text/javascript" src="https://pay.sellsn.io/embed.min.js"></script>
+
+<button id="embedButton" style="display:none;" data-sellsn-sid="4a2b3168-cf22-401f-981f-72c66e3bc5df" data-sellsn-pid="16a30251-8986-4756-86f2-42edfd5f1208">Show embed</button>
+
+<footer>
+    <p>&copy; 2024 <a href="https://ethetic.cc">ethetic.cc</a>. All rights reserved.</p>
+</footer>
+
+<script>
+    const productBox = document.getElementById('productBox');
+    const captchaContainer = document.querySelector('.cf-turnstile');
+    const embedButton = document.getElementById('embedButton');
+
+    productBox.style.display = 'none'; // Initially hide the product box
+    captchaContainer.style.display = 'block'; // Ensure captcha is visible
+
+    // When the captcha is successfully completed
+    window.onloadTurnstileCallback = function () {
+        turnstile.render("#example-container", {
+            sitekey: "your-site-key",
+            callback: function (token) {
+                console.log(`Challenge Success ${token}`);
+
+                // Hide captcha and fade in the content
+                captchaContainer.style.display = 'none'; // Hide captcha
+                document.body.style.opacity = '1'; // Fade in the content
+
+                // Show the product box
+                productBox.style.display = 'flex'; 
+            },
+        });
+    };
+</script>
+
+<script>
+    function createSnowflake() {
+        const snowflake = document.createElement('div');
+        snowflake.classList.add('snowflake');
+        snowflake.style.left = Math.random() * 100 + 'vw';
+        snowflake.style.animationDuration = Math.random() * 2 + 1 + 's';
+        snowflake.style.animationDelay = Math.random() * 2 + 's';
+        document.body.appendChild(snowflake);
+
+        setTimeout(() => {
+            snowflake.remove();
+        }, 3000);
+    }
+
+    setInterval(createSnowflake, 100);
+</script>
+
+</body>
+</html>
