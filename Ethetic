@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethetic - Download</title>
+    <style>
+        body {
+            background-color: #131313;
+            color: white;
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .content {
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #00FFFF;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            animation: glitch 1s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch {
+            0% {
+                text-shadow: 2px 0 red, -2px 0 blue, 2px 2px green;
+                transform: translate(0, 0);
+            }
+            25% {
+                text-shadow: -2px -2px yellow, 2px 2px purple;
+                transform: translate(5px, -5px);
+            }
+            50% {
+                text-shadow: 3px -3px cyan, -3px 3px magenta;
+                transform: translate(-5px, 5px);
+            }
+            75% {
+                text-shadow: 1px 2px green, -1px -2px red;
+                transform: translate(3px, 2px);
+            }
+            100% {
+                text-shadow: -1px -1px blue, 1px 1px yellow;
+                transform: translate(0, 0);
+            }
+        }
+
+        .download-btn {
+            background-color: #00FFFF;
+            color: #131313;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            margin-top: 20px;
+            text-transform: uppercase;
+            cursor: pointer;
+            letter-spacing: 1px;
+            animation: glitch 1s infinite linear alternate-reverse;
+            border-radius: 5px;
+        }
+
+        .download-btn:hover {
+            background-color: #00b3b3;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Introducing Ethetic Executor</h1>
+        <a href="path/to/your/download/file.zip" download>
+            <button class="download-btn">Download</button>
+        </a>
+    </div>
+</body>
+</html>
