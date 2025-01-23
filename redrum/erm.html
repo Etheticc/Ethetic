@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Gradient</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: black;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .gradient {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(173, 216, 230, 0.1) 0%, rgba(0, 0, 0, 1) 70%);
+            animation: moveGradient 5s infinite alternate;
+        }
+
+        @keyframes moveGradient {
+            0% {
+                transform: translateX(-25%);
+            }
+            100% {
+                transform: translateX(25%);
+            }
+        }
+
+        .center-box {
+            position: absolute;
+            width: 500px;
+            height: 300px;
+            background: rgba(18, 18, 18, 0.7);
+            backdrop-filter: blur(10px);
+            border: 0.1px solid rgba(49, 46, 46, 1);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .center-box h1 {
+            color: white;
+            font-size: 24px;
+            margin: 0;
+            text-align: center;
+            font-family: Arial, sans-serif;
+            font-weight: 600;
+        }
+
+        .text-box {
+            width: 80%;
+            height: 40px;
+            background: rgba(12, 12, 12, 0.7);
+            backdrop-filter: blur(10px);
+            border: 0.1px solid rgba(49, 46, 46, 1);
+            color: white;
+            font-size: 16px;
+            padding: 5px 10px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            outline: none;
+            margin-bottom: 10px;
+        }
+
+        .submit-button {
+            width: 50%;
+            height: 40px;
+            background: rgba(24, 24, 24, 0.8);
+            backdrop-filter: blur(10px);
+            border: none;
+            color: rgb(255, 255, 255);
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            margin-top: -5px;
+        }
+
+        .submit-button:hover {
+            background: rgba(24, 24, 24, 0.8);
+        }
+    </style>
+    <script>
+        function redirectToDashboard() {
+            const username = document.querySelector('.text-box').value;
+            if (!username) {
+                alert("Please enter a username.");
+            } else if (username.length > 8) {
+                alert("Username must be 8 characters or fewer.");
+            } else {
+                // Pass the username to dash.html via URL parameters
+                window.location.href = `dash.html?username=${encodeURIComponent(username)}`;
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="gradient"></div>
+    <div class="center-box">
+        <h1>Trex | Login</h1>
+        <input type="text" class="text-box" maxlength="8" placeholder="Enter A Username">
+        <button class="submit-button" onclick="redirectToDashboard()">Enter Trex</button>
+    </div>
+</body>
+</html>
