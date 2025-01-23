@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: black;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
+        .gradient {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(173, 216, 230, 0.1) 0%, rgba(0, 0, 0, 1) 70%);
+            animation: moveGradient 5s infinite alternate;
+        }
+
+        @keyframes moveGradient {
+            0% {
+                transform: translateX(-25%);
+            }
+            100% {
+                transform: translateX(25%);
+            }
+        }
+
+        .welcome-message-container {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(12, 12, 12, 0.4);
+            backdrop-filter: blur(10px); /* Blur effect */
+            border: 0.1px solid rgb(49, 46, 46); /* Border color */
+            padding: 10px 20px;
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Slight shadow for better visibility */
+        }
+
+        .welcome-message {
+            color: white;
+            font-size: 17px;
+            font-family: 'VHS-Gothic', Arial, sans-serif; /* VHS-Gothic font */
+            font-weight: 600;
+            margin: 0; /* Remove default margin */
+        }
+
+        @font-face {
+            font-family: 'VHS-Gothic';
+            src: url('./vhs-gothic.ttf') format('truetype'); /* File is in the same directory */
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .blurred-box {
+            position: absolute;
+            top: 70px; /* Placing it below the welcome message */
+            left: 20px;
+            width: 345px;
+            height: 800px;
+            background: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+            backdrop-filter: blur(10px); /* Blur effect inside */
+            border: 0.1px solid rgb(49, 46, 46); /* Border color */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Slight shadow for better visibility */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center; /* Center the buttons inside the blurred box */
+        }
+
+        .top-box {
+            position: absolute;
+            top: 20px; /* Position it 20px from the top of the larger box */
+            left: 50%; /* Center it horizontally */
+            transform: translateX(-50%); /* Offset by half its width to truly center it */
+            width: 230px;
+            height: 46px;
+            background: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+            border: 0.1px solid rgb(49, 46, 46); /* Border color */
+            border-radius: 8px; /* Rounded corners */
+        }
+
+        .green-glowing-button {
+            position: absolute;
+            top: 35%; /* Moved up a little more */
+            left: 10px; /* Moved a little to the right */
+            transform: translateY(-50%); /* Adjust to truly center vertically */
+            width: 15px; /* Much smaller size */
+            height: 15px; /* Much smaller size */
+            background-color: rgba(255, 116, 74); /* Green color */
+            border-radius: 50%;
+            border: 0.1px solid rgb(49, 46, 46); /* Border color */
+            box-shadow: 0 0 20px rgba(255, 116, 74); /* Stronger green glow */
+            animation: breathing 2.5s ease-in-out infinite; /* Breathing animation */
+        }
+
+        /* Breathing animation */
+        @keyframes breathing {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgba(255, 116, 74); /* Stronger glow */
+            }
+            50% {
+                transform: scale(1.2); /* Slightly enlarge */
+                box-shadow: 0 0 40px rgba(255, 116, 74); /* Stronger glow */
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 20px rgb(255, 116, 74); /* Stronger glow */
+            }
+        }
+
+        .version-text {
+            position: absolute;
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -50%); /* True centering */
+            font-family: Arial, sans-serif; /* Normal font */
+            font-size: 16px; /* Font size */
+            color: white; /* Text color */
+            font-weight: bold; /* Bold text */
+        }
+
+        /* Styling for buttons */
+        .button {
+            position: relative;
+            width: 200px;
+            height: 50px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 0.1px solid rgb(49, 46, 46);
+            border-radius: 8px;
+            margin: 10px 0; /* Space between the buttons */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            text-align: center;
+            padding-left: 35px; /* Padding to leave space for the image */
+            cursor: pointer; /* Make the button clickable */
+            font-family: Arial, sans-serif; /* Arial font */
+        }
+
+        .button img {
+            position: absolute;
+            left: 10px; /* Place image inside and not touching sides */
+            width: 25px; /* Adjust image size */
+            height: auto;
+        }
+
+        .button span {
+            font-weight: bold; /* Make the text inside the button bold */
+        }
+
+        /* Change cursor on hover */
+        .button:hover {
+            background: rgba(0, 0, 0, 0.4); /* Darken button slightly on hover */
+        }
+
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const username = urlParams.get('username');
+            const welcomeMessage = document.querySelector('.welcome-message');
+            welcomeMessage.textContent = `Welcome Back, ${username || 'Guest'}!`;
+        });
+    </script>
+</head>
+<body>
+    <div class="gradient"></div>
+    <div class="welcome-message-container">
+        <p class="welcome-message">Welcome Back, Guest!</p>
+    </div>
+    <div class="blurred-box">
+        <div class="top-box">
+            <!-- Green glowing button inside the top box -->
+            <div class="green-glowing-button"></div>
+            <!-- Version text inside the top box -->
+            <div class="version-text">Version: 0.0</div>
+        </div>
+        
+        <!-- Buttons inside the blurred box -->
+        <div class="button">
+            <img src="computer.png" alt="computer icon">
+            <span>Home</span>
+        </div>
+        <div class="button">
+            <img src="second.png" alt="second icon">
+            <span>Script</span>
+        </div>
+        <div class="button">
+            <img src="third.png" alt="third icon">
+            <span>Settings</span>
+        </div>
+    </div>
+</body>
+</html>
